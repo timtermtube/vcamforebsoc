@@ -1,0 +1,18 @@
+{
+    "name": "ebsoc_chrome",
+    "description" : "Google Extension for EBSOC",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "<all_urls>"
+    ],
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["script/run.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }],
+    "web_accessible_resources": [
+        "script/*"
+    ]
+  }

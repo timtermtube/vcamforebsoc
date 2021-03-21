@@ -1,7 +1,3 @@
-/*new Peer("videoProvider", {
-    host: "timclass.kro.kr", port:20500, debug: 1, path: "/peer"
-})*/
-
 const fs = require("fs");
 const credit = {
     ca: "fullchain please",

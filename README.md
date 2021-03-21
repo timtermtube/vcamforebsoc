@@ -8,7 +8,7 @@
 Discord를 포함한 일부 사이트에서 CORS 문제로 사용이 불가한 경우가 있습니다.
 
 # 설명
-4월부터 온클이 전체 실시간으로 전환된다는 말이 있다던데 카메라사기 귀찮아서 WebRTC 기능 이용해서 폰이랑 컴퓨터 VideoInput Device를 chrome extension으로 연동시킴
+4월부터 우리학교 온클이 전체 실시간으로 전환된다는 말이 있다던데 카메라사기 귀찮아서 WebRTC 기능 이용해서 폰이랑 컴퓨터 VideoInput Device를 chrome extension으로 연동시킴
 
 # 요구 사항
 Chrome Extension + WebRTC가 작동이 가능한 모든 브라우저

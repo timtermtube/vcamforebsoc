@@ -52,26 +52,30 @@ if (!exceptions.includes(location.hostname)) {
                     c.width = videoR.w; c.height = videoR.h;
                     v.autoplay = true;
     
-                    ctx.fillStyle = "#000000";
-                    ctx.fillRect(0, 0, videoR.w, videoR.h);
-                    ctx.fillStyle = "#ffffff";
-                    ctx.font = "30px Arial";
-                    ctx.textAlign = "center";
-                    ctx.fillText("rtcServer/Waiting: Waiting for client's connection... (Pairing after load this extension)", videoR.w/2, videoR.h/2);
-                    ctx.fillStyle = "#ffffff";
-                    ctx.font = "12px Arial";
-                    ctx.textAlign = "center";
-                    ctx.fillText("(If you've got CORS error in developer mode, Camera is unavailable to be loaded)", videoR.w/2, (videoR.h/2)+17);
-    
                     function render() {
-                        c.width = videoR.w; c.height = videoR.h;
-                        ctx.drawImage(v, 0, 0, videoR.w, videoR.h);
-                        requestAnimationFrame(render);
-                        videoR = {
-                            w: v.videoWidth,
-                            h: v.videoHeight
+                        if (!v.srcObject) {
+                            /* Waiting Response */
+                            ctx.fillStyle = "#ffffff";
+                            ctx.font = "30px Arial";
+                            ctx.textAlign = "center";
+                            ctx.fillText("rtc/renderWaiting: Waiting for client's connection... (Pairing after load this extension)", videoR.w/2, videoR.h/2);
+                            ctx.fillStyle = "#ffffff";
+                            ctx.font = "12px Arial";
+                            ctx.textAlign = "center";
+                            ctx.fillText("(If you've got CORS error in developer mode, Camera is unavailable to be loaded)", videoR.w/2, (videoR.h/2)+17);
                         }
+                        else {
+                            c.width = videoR.w; c.height = videoR.h;
+                            ctx.drawImage(v, 0, 0, videoR.w, videoR.h);
+                            videoR = {
+                                w: v.videoWidth,
+                                h: v.videoHeight
+                            }
+                        }
+                        requestAnimationFrame(render);
                     }
+
+                    render();
                     
                     peer.on("call", (call) => {
                         console.log("called");
@@ -79,7 +83,6 @@ if (!exceptions.includes(location.hostname)) {
                         call.on("stream", (userVid) => {
                             v.srcObject = userVid;
                             document.documentElement.appendChild(v);
-                            render();
                         });
                     });
                     const beRt = new MediaStream(c.captureStream());

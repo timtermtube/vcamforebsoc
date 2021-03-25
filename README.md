@@ -1,5 +1,5 @@
 # Outdated
-본 프로젝트는 EBS 온라인 클래스에서 알 수 없는 사유로 작동되지 않습니다.
+본 프로젝트는 EBS 온라인 클래스에서의 카메라 로딩 시 exactId를 지정하지 않고 로딩하는 이유(추정)로 인하여 사용이 불가합니다.
 
 # Before to read
 본 글은 한국어로만 작성되어 있습니다. The README was written in only Korean.
